@@ -372,6 +372,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     hostapd \
+    wifilogd \
     wpa_supplicant \
     wpa_supplicant.conf
 
@@ -383,6 +384,11 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf \
     $(DEVICE_PATH)/wifi/firmware/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     $(DEVICE_PATH)/wifi/firmware/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    $(DEVICE_PATH)/configs/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(DEVICE_PATH)/configs/hostapd.deny:system/etc/hostapd/hostapd.deny
 
 # Inherit common proprietary files
 $(call inherit-product-if-exists, vendor/xiaomi/riva/riva-vendor.mk)
